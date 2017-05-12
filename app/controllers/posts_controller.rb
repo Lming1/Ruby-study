@@ -16,15 +16,34 @@ class PostsController < ApplicationController
     
     #Read
     def index
+    #모든 post를 보여줘
         @posts = Post.all
     end
     
     def show
+    #한 개의 post를 보여주는 뷰
         @post = Post.find(params[:post_id])
+    end
+    
+    #Update
+    def edit
+    # 사용자가 데이터를 입력할 화면
+        @post = Post.find(params[:post_id])
+    end
+    
+    def update
+    # 입력 받은 데이터를 실제 DB에 저장할 액션.
+        @post = Post.find(params[:post_id])
+    # 수정할 코드
+        @post.title = params[:input_title]
+        @post.content = params[:input_content]
+        @post.save
+        redirect_to "/posts/show/#{@post.id}"
     end
     
     #Delete
     def destroy
+    # 한 개의 post를 삭제하는 액션.
         @post = Post.find(params[:post_id])
         @post.destroy
         redirect_to '/'
