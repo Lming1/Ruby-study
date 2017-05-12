@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+    #Create
     def new
     # 사용자가 데이터를 입력할 화면
     # 자동으로 액션 이름과 같은 화면을 불러서 사용자에게 보여줘라.
@@ -10,6 +11,15 @@ class PostsController < ApplicationController
         @post.title = params[:input_title]
         @post.content = params[:input_content]
         @post.save
-        redirect_to '/posts/new'
+        redirect_to "/posts/show/#{@post.id}"
+    end
+    
+    #Read
+    def index
+        @posts = Post.all
+    end
+    
+    def show
+        @post = Post.find(params[:post_id])
     end
 end
