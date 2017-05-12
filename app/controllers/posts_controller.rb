@@ -22,4 +22,11 @@ class PostsController < ApplicationController
     def show
         @post = Post.find(params[:post_id])
     end
+    
+    #Delete
+    def destroy
+        @post = Post.find(params[:post_id])
+        @post.destroy
+        redirect_to '/'
+    end
 end

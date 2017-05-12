@@ -5,4 +5,7 @@ Rails.application.routes.draw do
   #Read
   root 'posts#index'
   get 'posts/show/:post_id' => 'posts#show'
+  
+  #Delete
+  get 'posts/destroy/:post_id' => 'posts#destroy'
 end
