@@ -10,4 +10,9 @@ Rails.application.routes.draw do
   post '/posts/update/:post_id' => 'posts#update'
   #Delete
   post 'posts/destroy/:post_id' => 'posts#destroy'
+  #Comments
+  ##Create
+  post '/posts/show/:post_id/comments/create' => 'comments#create'
+  ##Destroy
+  # post '/' => 'comments#destroy'
 end
