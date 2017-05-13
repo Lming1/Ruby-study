@@ -23,6 +23,7 @@ class PostsController < ApplicationController
     def show
     #한 개의 post를 보여주는 뷰
         @post = Post.find(params[:post_id])
+        @comments = Comment.where(post_id: params[:post_id])
     end
     
     #Update
